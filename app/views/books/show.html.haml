@@ -1,0 +1,62 @@
+.row.table_margin
+  .col-sm-10.offset-sm-1
+    .container
+      %div.second_main_div
+        %div.the_smallest_div2
+          =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
+        %div.big_div
+          %h1= @book.title
+          .jumbotron.jumbotron_margin
+            = @book.description
+
+          %div.main_div
+            %div.small_div
+              %span Author:
+              %a= link_to @book.author.full_name, author_path(@book.author.id)
+
+          %div.main_div
+            %div.small_div
+              %span Genre:
+              %a= link_to @book.genre.name, books_genre_path(@book.genre)
+
+          %div.main_div
+            %div.small_div
+              %span Publisher:
+              %a= link_to @book.publisher.name, publisher_path(@book.publisher.id)
+
+          %div.main_div
+            %div.small_div
+              %span Release date:
+              %a= @book.year_of_release.strftime("%_m %b %Y")
+
+          %div.main_div
+            %div.small_div
+              %span Number of pages:
+              %a= @book.number_of_pages
+
+          %div.main_div
+            %div.small_div
+              %span Original language:
+              %a= @book.original_language
+
+          %div.main_div
+            %div.small_div
+              %span Translated into:
+              %a= @book.translated_into
+
+
+
+    - if user_signed_in?
+      - if @comments.any?{|comment| comment.user_id == current_user.id }
+      - else
+        = form_for(@comment, url: book_comments_path(@book.id)) do |form|
+          %p= form.text_area(:description, size: "160x10")
+          %p= form.hidden_field(:book_id)
+          = form.submit
+
+      .container
+        - @comments.each do |comment|
+          %h5= comment.user&.name
+          .well= comment.description
+          - if user_signed_in? && current_user.id == comment.user_id
+            = link_to 'Delete comment', book_comment_path(@book.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,14 @@
+.row.table_margin
+  .col-sm-10.offset-sm-1
+    .container
+      %div.second_main_div
+        %div.the_smallest_div2
+          =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
+        %div.big_div
+          %h1= @publisher.name
+          %div
+            %strong
+              %span.span_margin City: #{@publisher.city}
+
+          .jumbotron.jumbotron_margin
+            = @publisher.description

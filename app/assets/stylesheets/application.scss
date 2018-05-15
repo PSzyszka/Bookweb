@@ -1,0 +1,88 @@
+@import "bootstrap";
+
+.center {
+  margin: auto;
+  text-align: auto ;
+}
+
+.table_margin {
+  margin: 20px;
+}
+
+.jumbotron_margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 32px 32px 32px 32px;
+}
+
+.justified_text {
+  text-align: justify;
+  margin-bottom: 15px;
+}
+.search_tag {
+  padding: 0.375rem 10rem;
+}
+
+.img {
+  display: block;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.small_div{
+  width: 50%;
+}
+
+.span_margin{
+  margin: 0px 30px 10px 0px;
+}
+
+.big_div{
+  width: 75%;
+}
+
+.the_bigges_div{
+  width: 85%;
+}
+.the_smallest_div{
+  width: 25%;
+}
+
+.new_row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: 0px;
+}
+.the_smallest_div2{
+  width: 25%;
+  margin: 60px 0px 0px 10px;
+}
+
+.one_book_table_size {
+  height: 250px;
+  width: 650px;
+  margin: 10px 10px 10px 10px;
+}
+
+.main_div {
+  display: flex;
+}
+
+.second_main_div {
+  display: flex;
+  margin: 0px 0px 15px 0px;
+}
+
+.navbar_text {
+  color: #28a745;
+  font-size: 20px;
+  margin: 0px 10px 0px 10px;
+}
+
+.background-image {
+  background-image: image-url('background_library.jpeg');
+  background-repeat: no-repeat center fixed;
+  background-size: 200%;
+}

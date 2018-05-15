@@ -1,0 +1,17 @@
+.row.table_margin
+  .col-sm-8.offset-sm-2
+    %h1.text-center All publishers
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Name
+          %th City
+          %th Released books
+      %tbody
+        - @publishers.each_with_index do |publisher, i|
+          %tr
+            %td= i + 1
+            %td= link_to publisher.name, publisher_path(publisher)
+            %td= publisher.city
+            %td= publisher.books.count

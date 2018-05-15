@@ -1,0 +1,17 @@
+.row.table_margin
+  .col-sm-8.offset-sm-2
+    %h1.text-center All authors
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Name
+          %th Birth date
+          %th Released books
+      %tbody
+        - @authors.each_with_index do |author, i|
+          %tr
+            %td= i + 1
+            %td= link_to author.full_name, author_path(author.id)
+            %td= author.birth_date.strftime("%_m %b %Y")
+            %td= author.books.count

@@ -1,0 +1,17 @@
+.row.table_margin
+  .col-sm-4.offset-sm-4
+    %h2.text-center.login-headline Send massage
+    .panel.panel-default
+      .panel-body
+        = form_for(@message, as: :message, url:  messages_path) do |f|
+
+          .form-group
+            = f.label :email
+            %br/
+            = f.email_field :email, class: 'form-control'
+          .form-group
+            = f.label :description
+            %br/
+            = f.text_area :description, class: 'form-control'
+          .actions.pull-right
+            = f.submit "Send message", class: 'btn btn-default'

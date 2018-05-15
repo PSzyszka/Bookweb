@@ -1,0 +1,17 @@
+.row.table_margin
+  .col-sm-8.offset-sm-2
+    %h1.text-center All genres
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Name
+          %th Number of books
+          %th Created at
+      %tbody
+        - @genres.each_with_index do |genre, i|
+          %tr
+            %td= i + 1
+            %td= link_to genre.name, books_genre_path(genre.id)
+            %td= genre.number_of_books
+            %td= genre.created_at.strftime("%_m %b %Y")

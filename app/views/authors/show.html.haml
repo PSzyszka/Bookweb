@@ -1,0 +1,45 @@
+.row.table_margin
+  .col-sm-10.offset-sm-1
+    .container
+      %div.second_main_div
+        %div.the_smallest_div2
+          =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
+        %div.big_div
+          %h1= @author.full_name
+          %div
+            %strong
+              %span.span_margin Birth date: #{@author.birth_date.strftime("%_m %b %Y")}
+            %strong
+              %span Rating: #{@author.rating}
+
+          .jumbotron.jumbotron_margin
+            = @author&.description
+
+          %div.main_div
+            %div.small_div
+              %span Genres:
+              - @author.books.each do |book|
+                %a= link_to book.genre.name,  books_genre_path(book.genre)
+
+          %div.main_div
+            %div.small_div
+              %span Books:
+              - @author.books.each do |book|
+                %a= link_to book.title,  book_path(book.id)
+
+    #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
+      .carousel-inner{:role => "listbox"}
+        .carousel-item.active
+          = render "carousel_slide"
+        .carousel-item
+          = render "carousel_slide"
+        .carousel-item
+          = render "carousel_slide"
+
+      %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleControls", :role => "button"}
+        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+        %span.sr-only Previous
+      %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleControls", :role => "button"}
+        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+        %span.sr-only Next
+

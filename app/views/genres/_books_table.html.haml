@@ -1,0 +1,41 @@
+%table.table
+  %tbody
+    - @genre.books.each_with_index do |book, i|
+      %tr
+        %td= i + 1
+        %td.one_book_table_size
+          .container
+            %h3= link_to book.title, book_path(book)
+            %p.justified_text
+              = book.description
+
+          .container
+            %div.second_main_div
+              %div.small_div
+                %strong
+                  %span Rating: #{book.rating}
+              %div.small_div
+                %strong
+                  %span Want to read
+
+          .container
+            %div.main_div
+              %div.small_div
+                %span author:
+                %a= link_to book.author.full_name, author_path(book.author.id)
+              %div.small_div
+                %span publisher:
+                %a= link_to book.publisher.name, publisher_path(book.publisher.id)
+
+          .container
+            %div.main_div
+              %div.small_div
+                %span genre:
+                %a= link_to @genre.name, books_genre_path(@genre)
+              %div.small_div
+                %span date of release:
+                %a= book.year_of_release.strftime("%_m %b %Y")
+
+          - if user_signed_in?
+            .container
+              %p= link_to "Edit", edit_book_path(book)
