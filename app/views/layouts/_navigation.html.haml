@@ -12,8 +12,8 @@
   .collapse.navbar-collapse
     %ul.nav.navbar-nav
       = form_tag books_path, method: :get, id: 'search-form', class: 'form-inline my-2 my-lg-0' do
-        = text_field_tag 'search', nil, placeholder: 'Search...', class: 'form-control mr-sm-2'
-        = submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0'
+        = text_field_tag 'search', params[:search], placeholder: 'Search...', class: 'form-control mr-sm-2'
+        = submit_tag 'Search', name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
 
   %nav.navbar.navbar-default.navbar-static-top
     .container
