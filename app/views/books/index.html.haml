@@ -1,7 +1,12 @@
-.row.table_margin
-  .col-sm-8.offset-sm-2
-    %h1.text-center List of Books
-    = render 'books_table', books: @books
+.container
+  .row.table-margin
+    .col-sm-8.offset-sm-2
+      %h1.text-center List of Books
+      = render 'books_table', books: @books
 
-    - if @books.blank?
-      %h4.text-center There are no books containing the term #{params[:search]}
+      - if @books.blank?
+        %h4.text-center There are no books containing the term #{params[:search]}
+
+%nav.navbar-bottom.navbar.navbar-expand-lg.navbar-light{style: "background-color: #5c3e7c;"}
+  #navbarNav.collapse.navbar-collapse
+    %a Thanks for visiting
