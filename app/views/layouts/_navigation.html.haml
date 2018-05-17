@@ -2,22 +2,22 @@
   #navbarNav.collapse.navbar-collapse
     %ul.navbar-nav
       %li.nav-item.active
-        %a= link_to image_tag("logo.png", height: "100%", width: "12%"), books_path, class: 'navbar_text'
+        %a= link_to image_tag("logo.png", height: "100%", width: "12%"), books_path, class: 'navbar-text-green'
         %span.sr-only (current)
-        %a= link_to 'Genre', genres_path, class: 'navbar_text'
-        %a= link_to 'Authors', authors_path, class: 'navbar_text'
-        %a= link_to 'Publishers', publishers_path, class: 'navbar_text'
-        %a= link_to 'Send message', new_message_path, class: 'navbar_text'
+        %a= link_to 'Genre', genres_path, class: 'navbar-text-green'
+        %a= link_to 'Authors', authors_path, class: 'navbar-text-green'
+        %a= link_to 'Publishers', publishers_path, class: 'navbar-text-green'
+        %a= link_to 'Send message', new_message_path, class: 'navbar-text-green'
 
   .collapse.navbar-collapse
     %ul.nav.navbar-nav
       = form_tag books_path, method: :get, id: 'search-form', class: 'form-inline my-2 my-lg-0' do
-        = text_field_tag 'search', params[:search], placeholder: 'Search...', class: 'form-control mr-sm-2'
+        = text_field_tag 'search', params[:search], placeholder: 'Search...', class: 'form-control mr-sm-2', autocomplete: :on
         = submit_tag 'Search', name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
 
   %nav.navbar.navbar-default.navbar-static-top
     .container
       .collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
+          %a.navbar-text-green.slide_down Slide down
           = render 'layouts/navigation_links_right'
-
