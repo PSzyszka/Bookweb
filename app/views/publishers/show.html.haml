@@ -1,14 +1,14 @@
-.row.table_margin
+.row.table-margin
   .col-sm-10.offset-sm-1
     .container
-      %div.second_main_div
-        %div.the_smallest_div2
+      %div.second-main-div
+        %div.the-smallest-div2
           =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
-        %div.big_div
+        %div.big-div
           %h1= @publisher.name
           %div
             %strong
               %span.span_margin City: #{@publisher.city}
 
-          .jumbotron.jumbotron_margin
+          .jumbotron.jumbotron-margin
             = @publisher.description
