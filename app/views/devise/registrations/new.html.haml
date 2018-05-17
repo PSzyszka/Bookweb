@@ -1,4 +1,4 @@
-.row.table_margin
+.row.table-margin
   .col-sm-4.offset-sm-4
     %h2.text-center.login-headline Sign up
     .panel.panel-default
@@ -24,5 +24,16 @@
             = f.label :password_confirmation
             %br/
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-          .actions.pull-right
+
+          .container
+            %div.second-main-div
+              %div.small-div2
+                = link_to 'Policy terms', books_path
+              %div.small-div2
+                = form_for user_session_path do |f|
+                  #{f.check_box :terms, class: 'form-control-for-checkbox'}
+              %div.small-div2
+                %button{type: 'button', class: 'button-size'} Accept
+
+          .actions.pull-right.submit-botton
             = f.submit "Sign up", class: 'btn btn-default'
