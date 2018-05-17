@@ -1,10 +1,10 @@
-.row.table_margin
+.row.table-margin
   .col-sm-10.offset-sm-1
     .container
-      %div.second_main_div
-        %div.the_smallest_div2
+      %div.second-main-div
+        %div.the-smallest-div2
           =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
-        %div.big_div
+        %div.big-div
           %h1= @author.full_name
           %div
             %strong
@@ -12,27 +12,24 @@
             %strong
               %span Rating: #{@author.rating}
 
-          .jumbotron.jumbotron_margin
+          .jumbotron.jumbotron-margin
             = @author&.description
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Genres:
-              - @author.books.each do |book|
-                %a= link_to book.genre.name,  books_genre_path(book.genre)
+              - @genres.each do |genre|
+                %a= link_to genre.name, books_genre_path(genre.id)
 
-          %div.main_div
-            %div.small_div
-              %span Books:
-              - @author.books.each do |book|
-                %a= link_to book.title,  book_path(book.id)
+    %div.submit-botton-2
+      %button.btn.btn-outline-success.my-2.my-sm-0 Show related books:
 
     #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
       .carousel-inner{:role => "listbox"}
         .carousel-item.active
           = render "carousel_slide"
         .carousel-item
-          = render "carousel_slide"
+          = render "carousel_slide2"
         .carousel-item
           = render "carousel_slide"
 
