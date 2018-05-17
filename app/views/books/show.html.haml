@@ -1,46 +1,46 @@
-.row.table_margin
+.row.table-margin
   .col-sm-10.offset-sm-1
     .container
-      %div.second_main_div
-        %div.the_smallest_div2
+      %div.second-main-div
+        %div.the-smallest-div2
           =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
-        %div.big_div
+        %div.big-div
           %h1= @book.title
-          .jumbotron.jumbotron_margin
+          .jumbotron.jumbotron-margin
             = @book.description
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Author:
               %a= link_to @book.author.full_name, author_path(@book.author.id)
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Genre:
               %a= link_to @book.genre.name, books_genre_path(@book.genre)
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Publisher:
               %a= link_to @book.publisher.name, publisher_path(@book.publisher.id)
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Release date:
               %a= @book.year_of_release.strftime("%_m %b %Y")
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Number of pages:
               %a= @book.number_of_pages
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Original language:
               %a= @book.original_language
 
-          %div.main_div
-            %div.small_div
+          %div.main-div
+            %div.small-div
               %span Translated into:
               %a= @book.translated_into
 
