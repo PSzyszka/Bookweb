@@ -9,6 +9,10 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def policy_terms
+    @book = Book.find(params[:id])
+  end
+
   private
   def search_params
     params.permit(:search)
