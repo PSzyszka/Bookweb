@@ -3,6 +3,7 @@ class CreateAuthors < ActiveRecord::Migration[5.1]
     create_table :authors do |t|
       t.string :name
       t.references :book, index: true
+      t.references :rating, index: true
 
       t.timestamps
     end
