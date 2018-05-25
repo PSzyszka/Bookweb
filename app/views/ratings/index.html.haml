@@ -1,0 +1,16 @@
+.row.table-margin
+  .col-sm-6.offset-sm-3
+    %h1.text-center All ratings to:
+    %h1.text-center #{@author.full_name}
+    %table.table
+      %thead
+        %tr
+          %th
+          %th User Name
+          %th Rating
+      %tbody
+        - @ratings.each_with_index do |rating, i|
+          %tr
+            %td= i + 1
+            %td user #{i + 1}
+            %td= rating.vote
