@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.carousel.slide').hide();
-  $('button').click(function() {
+  $('#show_button').click(function() {
     $('#carouselExampleControls').slideToggle(1000);
   });
 
@@ -16,7 +16,20 @@ $(document).ready(function() {
       $('.form-control-for-checkbox').prop('checked', true);
     }
   });
+
+  $('#submit_rating').hide();
+  $('.span-size').click(function(e) {
+    var vote_value = $(e.currentTarget).data("vote")
+    $("#rating_vote").val(vote_value);
+    $(e.currentTarget).addClass(".rating-on")
+    $('#submit_rating').show();
+  });
 });
+
+
+
+
+
 
 // $(window).scroll(function() {
 //   if($(window).scrollTop() + $(window).height() == $(document).height()) {
