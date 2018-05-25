@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514102043) do
+ActiveRecord::Schema.define(version: 20180523070230) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,24 +31,25 @@ ActiveRecord::Schema.define(version: 20180514102043) do
 
   create_table "authors", force: :cascade do |t|
     t.integer "book_id"
+    t.integer "rating_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
     t.text "description"
-    t.integer "rating"
     t.date "birth_date"
     t.index ["book_id"], name: "index_authors_on_book_id"
+    t.index ["rating_id"], name: "index_authors_on_rating_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "rating"
     t.datetime "year_of_release"
     t.integer "genre_id"
     t.integer "publisher_id"
     t.integer "author_id"
+    t.integer "rating_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "original_language"
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180514102043) do
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
+    t.index ["rating_id"], name: "index_books_on_rating_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -103,6 +105,16 @@ ActiveRecord::Schema.define(version: 20180514102043) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_publishers_authors_on_author_id"
     t.index ["publisher_id"], name: "index_publishers_authors_on_publisher_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.float "vote"
+    t.integer "user_id"
+    t.integer "author_id"
+    t.integer "book_id"
+    t.index ["author_id"], name: "index_ratings_on_author_id"
+    t.index ["book_id"], name: "index_ratings_on_book_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
