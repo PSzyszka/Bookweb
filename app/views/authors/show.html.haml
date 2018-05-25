@@ -7,10 +7,19 @@
         %div.big-div
           %h1= @author.full_name
           %div
+            %i.span_margin.text-size-20 Birth date: #{ @author.birth_date.strftime("%_m %b %Y") }
+            %i.text-size-20 Rating:
             %strong
-              %span.span_margin Birth date: #{@author.birth_date.strftime("%_m %b %Y")}
-            %strong
-              %span Rating: #{@author.rating}
+              %i.text-size-20 #{ Rating.average_of_votes(@author.id) }
+
+            = form_for(@rating, as: :rating, url: author_ratings_path(@author.id))do |f|
+              %div.rating
+                - (1..5).each do |i|
+                  %span.span-size{ data: { vote: "#{i * 1}"} } ☆
+              %div.rating-hidden-fieds
+                = hidden_field(:rating, :vote)
+                = hidden_field(:rating, :author_id)
+                = f.submit "Rate", class: "btn btn-outline-success my-2 my-sm-0", id: "submit_rating"
 
           .jumbotron.jumbotron-margin
             = @author&.description
@@ -22,21 +31,22 @@
                 %a= link_to genre.name, books_genre_path(genre.id)
 
     %div.submit-botton-2
-      %button.btn.btn-outline-success.my-2.my-sm-0 Show related books:
+      %button.btn.btn-outline-success.my-2.my-sm-0#show_button Show related books:
 
-    #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
-      .carousel-inner{:role => "listbox"}
+    #carouselExampleControls.carousel.slide{ "data-ride" => "carousel" }
+      .carousel-inner
         .carousel-item.active
+
           = render "carousel_slide"
         .carousel-item
           = render "carousel_slide2"
         .carousel-item
           = render "carousel_slide"
 
-      %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleControls", :role => "button"}
-        %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+      %a.carousel-control-prev{ "data-slide" => "prev", href: "#carouselExampleControls", role: "button" }
+        %span.carousel-control-prev-icon{ "aria-hidden" => "true" }
         %span.sr-only Previous
-      %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleControls", :role => "button"}
-        %span.carousel-control-next-icon{"aria-hidden" => "true"}
+      %a.carousel-control-next{ "data-slide" => "next", href: "#carouselExampleControls", role: "button" }
+        %span.carousel-control-next-icon{ "aria-hidden" => "true" }
         %span.sr-only Next
 
