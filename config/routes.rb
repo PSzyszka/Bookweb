@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :users
-  resources :authors, only: [:index, :show]
   resources :publishers, only: [:index, :show]
   resources :messages, only: [:new, :create]
+  resources :authors, only: [:index, :show] do
+    resources :ratings, only: [:index, :create]
+  end
 
   scope module: :admin do
     resources :authors, only: [:new, :edit, :create, :update, :destroy]
@@ -16,6 +18,9 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :comments, only: [:create, :destroy]
+    member do
+      get "policy_terms"
+    end
   end
 
   resources :genres, only: :index do
