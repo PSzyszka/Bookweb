@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   belongs_to :publisher
   has_many :comments
 
-  validates :title, :description, :rating, :year_of_release, presence: true
+  validates :title, :description, :year_of_release, presence: true
   validates :original_language, :number_of_pages, :translated_into, presence: true
 
   def self.search(search_criteria)
