@@ -38,11 +38,16 @@ module Admin
 
     private
     def book_params
-      params.require(:book).permit(:title, :description, :rating, :year_of_release, genre_attributes: [:name], author_attributes: [:first_name, :last_name])
-    end
-
-    def search_params
-      params.permit(:search)
+      params.require(:book).permit(
+        :title,
+        :description,
+        :rating, :year_of_release,
+        :original_language,
+        :number_of_pages,
+        :translated_into,
+        genre_attributes: [:name],
+        author_attributes: [:first_name, :last_name]
+      )
     end
   end
 end

@@ -3,7 +3,6 @@ module Admin
 
     def create
       params_with_user_id = comment_params.merge(user_id: current_user.id)
-
     end
 
     def destroy
