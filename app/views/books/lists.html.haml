@@ -1,0 +1,25 @@
+.row.table-margin
+  .col-sm-8.offset-sm-2
+    %h1.text-center All books
+    %table.table
+      %thead
+        %tr
+          %th
+          %th Title
+          %th Author
+          %th Genre
+          %th Publisher
+          %th Release date
+          %th Rating
+          %th All ratings
+      %tbody
+        - @books.each_with_index do |book, i|
+          %tr
+            %td= i + 1
+            %td= link_to book.title, book_path(book.id)
+            %td= link_to book.author.full_name, author_path(book.author.id)
+            %td= link_to book.genre.name, books_genre_path(book.genre.id)
+            %td= link_to book.publisher.name, publisher_path(book.publisher.id)
+            %td= book.year_of_release.strftime("%_m %b %Y")
+            %td= Rating.average_of_votes(book.id, 'book')
+            %td= link_to 'View', book_ratings_path(book.id)
