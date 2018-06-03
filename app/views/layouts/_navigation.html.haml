@@ -4,10 +4,13 @@
       %li.nav-item.active
         %a= link_to image_tag("logo.png", height: "100%", width: "12%"), books_path, class: 'navbar-text-green'
         %span.sr-only (current)
+        %a= link_to 'Books',  books_lists_path, class: 'navbar-text-green'
         %a= link_to 'Genre', genres_path, class: 'navbar-text-green'
         %a= link_to 'Authors', authors_path, class: 'navbar-text-green'
         %a= link_to 'Publishers', publishers_path, class: 'navbar-text-green'
-        %a= link_to 'Send message', new_message_path, class: 'navbar-text-green'
+        %a= link_to 'Message', new_message_path, class: 'navbar-text-green'
+        %a= link_to 'New', new_book_path, class: 'navbar-text-green'
+
 
   .collapse.navbar-collapse
     %ul.nav.navbar-nav

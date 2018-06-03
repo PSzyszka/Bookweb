@@ -13,7 +13,7 @@
             %div.second-main-div
               %div.small-div
                 %strong
-                  %span Rating: #{book.rating_id}
+                  %span Rating: #{Rating.average_of_votes(book.id, 'book')}
               %div.small-div
                 %strong
                   %span Want to read
