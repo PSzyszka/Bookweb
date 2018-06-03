@@ -15,6 +15,6 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require rails-ujs
-//= require turbolinks
 //= require text_hide
+//= require jquery.easy-autocomplete
 //= require_tree .
