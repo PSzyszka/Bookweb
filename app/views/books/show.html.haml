@@ -6,6 +6,26 @@
           =image_tag("przykładowa_książka.jpg", width: "160", alt: "Edit Entry")
         %div.big-div
           %h1= @book.title
+
+          %div
+            %i.text-size-20 Rating:
+            - if Rating.average_of_votes(@book.id, 'book') == nil
+              %span.star ☆
+            - else
+              %strong
+                %i.text-size-20 #{ Rating.average_of_votes(@book.id, 'book') }
+
+            = form_for(@rating, as: :rating, url:  book_ratings_path(@book.id))do |f|
+              %div.rating
+                - [*1..5].reverse.each do |i|
+                  %span.span-size{ data: { vote: "#{i * 1}"} } ☆
+              %div#vote
+                %span.live-rating
+              %div.rating-hidden-fieds
+                = hidden_field(:rating, :vote)
+                = hidden_field(:rating, :book_id)
+                = f.submit "Rate", class: "btn btn-outline-success my-2 my-sm-0", id: "submit_rating"
+
           .jumbotron.jumbotron-margin
             = @book.description
 

@@ -2,7 +2,10 @@
   %tbody
     - @books.each_with_index do |book, i|
       %tr
-        %td= i + 1
+        - if params[:page] == nil
+          %td= params[:page].to_i + i + 1
+        - else
+          %td= (params[:page].to_i - 1)*15 + i + 1
         %td.one-book-table-size
           .container
             %div.new-row
@@ -15,7 +18,10 @@
             %div.second-main-div
               %div.small-div
                 %strong
-                  %span Rating: 10
+                  %span Rating:
+                  - if Rating.average_of_votes(book.id, 'book') != nil
+                    %strong
+                      %span #{Rating.average_of_votes(book.id, 'book')}
               %div.small-div
                 %strong
                   %span Want to read
@@ -38,6 +44,23 @@
                 %span date of release:
                 %a= book.year_of_release.strftime("%_m %b %Y")
 
+          .container
+            %div.main-div
+              %div.small-div
+                %span edit:
+                %a= link_to 'Edit', edit_book_path(book)
+              %div.small-div
+                %span destroy:
+                %a= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }
+
       - if admin_signed_in?
         %td
           %p= link_to "Edit", edit_book_path(book)
+
+.row.text-inline
+  .col-sm-3
+    = link_to_previous_page @books, 'Previous Page'
+  .col-sm-6
+    = page_entries_info @books
+  .col-sm-3
+    = link_to_next_page @books, 'Next Page'
