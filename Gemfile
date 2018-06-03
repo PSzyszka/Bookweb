@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'sprockets-rails', '~> 3.2.1'
 gem "haml-rails"
 gem 'draper'
+gem 'kaminari'
+gem "select2-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -32,8 +34,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -52,11 +53,13 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "faker"
   gem 'rspec-rails', '~> 3.7'
+  gem 'factory_bot_rails'
 
   # For code debugging
   gem 'pry', '~> 0.10'
   gem 'pry-rails', '~> 0.3'
   gem 'pry-byebug', '~> 3.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
