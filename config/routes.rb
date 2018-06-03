@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   scope module: :admin do
     resources :authors, only: [:new, :edit, :create, :update, :destroy]
     resources :publishers, only: [:new, :edit, :create, :update, :destroy]
-    resources :books, only: [:new, :edit, :create, :update, :destroy]
     resources :comments, only: [:destroy]
   end
 
-  resources :books do
+  get '/books/lists' => 'books#lists'
+  resources :books, only: [:index, :show, :create, :new, :destroy, :update, :edit] do
+    resources :ratings, only: [:index, :create]
     resources :comments, only: [:create, :destroy]
     member do
       get "policy_terms"

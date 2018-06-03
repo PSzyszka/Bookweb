@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523070230) do
+ActiveRecord::Schema.define(version: 20180602063050) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20180523070230) do
   end
 
   create_table "authors", force: :cascade do |t|
-    t.integer "book_id"
     t.integer "rating_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,18 +37,16 @@ ActiveRecord::Schema.define(version: 20180523070230) do
     t.string "last_name"
     t.text "description"
     t.date "birth_date"
-    t.index ["book_id"], name: "index_authors_on_book_id"
     t.index ["rating_id"], name: "index_authors_on_rating_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "year_of_release"
+    t.date "year_of_release"
     t.integer "genre_id"
     t.integer "publisher_id"
     t.integer "author_id"
-    t.integer "rating_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "original_language"
@@ -58,7 +55,6 @@ ActiveRecord::Schema.define(version: 20180523070230) do
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
-    t.index ["rating_id"], name: "index_books_on_rating_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -87,14 +83,10 @@ ActiveRecord::Schema.define(version: 20180523070230) do
     t.string "name"
     t.string "city"
     t.integer "count_of_published_books"
-    t.integer "book_id"
-    t.integer "author_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-    t.index ["author_id"], name: "index_publishers_on_author_id"
-    t.index ["book_id"], name: "index_publishers_on_book_id"
     t.index ["genre_id"], name: "index_publishers_on_genre_id"
   end
 
