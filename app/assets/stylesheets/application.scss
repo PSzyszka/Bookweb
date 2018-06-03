@@ -1,3 +1,12 @@
+/*
+*= require easy-autocomplete
+*= require easy-autocomplete.themes
+*= @import easy-autocomplete
+*= @import easy-autocomplete.themes
+*/
+
+@import "easy-autocomplete";
+@import "easy-autocomplete.themes";
 @import "bootstrap";
 
 .fixed-position {
@@ -5,14 +14,6 @@
   top: 0;
   width: 100%;
   z-index: 1;
-}
-
-.gold-star {
-  background-image: url("gold_star.png");
-  width: 30px;
-  height: 30px;
-  display: block;
-  float: left;
 }
 
 .navbar-bottom {
@@ -120,6 +121,7 @@
   display: flex;
   margin: 0px 0px 15px 0px;
 }
+
 .navbar-light {
   .navbar-text-green {
     color: #28a745;
@@ -137,12 +139,13 @@
   width: 30%;
   display: inline-block;
   margin-top: -30px;
+  padding-bottom: 3px;
 }
 
 .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
-  width: 30%;
+  width: 154px;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -150,8 +153,8 @@
 .rating > span {
   display: inline-block;
   position: relative;
-
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
   content: "\2605";
@@ -161,8 +164,38 @@
 }
 
 .span-size {
-  margin: -15px -3px -30px -3px;
+  margin: -5px -10px 0px -3px;
+  display: inline-block;
+  vertical-align: bottom;
   font-size: 40px;
+  color: #919191;
+  line-height: normal;
+}
+
+#vote {
+  width: 30px;
+  display: inline-block;
+  vertical-align: bottom;
+  padding-bottom: 4px;
+}
+
+#vote > span {
+  display: inline-block;
+  position: relative;
+}
+
+#vote > span:hover:before,
+#vote> span:hover ~ span:before {
+  position: absolute;
+  margin: -5px -10px 0px -3px;
+  color: #919191;
+}
+
+.live-rating {
+  margin: -5px -10px 0px -3px;
+  display: inline-block;
+  vertical-align: bottom;
+  font-size: 25px;
   color: #919191;
 }
 
@@ -173,4 +206,34 @@
 
 .text-size-20 {
   font-size: 20px
+}
+
+.rating > span.rating-on:before,
+.rating > span.rating-on ~ span:before {
+  content: "\2605";
+  position: absolute;
+  color: gold;
+  text-shadow: -2px 3px 18px #888888;
+}
+
+.text-inline {
+  margin: auto;
+  text-align: center;
+}
+
+.star {
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 33px;
+  color: #919191;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.div-margin-botton {
+  margin-bottom: 6px;
 }

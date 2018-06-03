@@ -19,38 +19,59 @@ $(document).ready(function() {
 
   $('#submit_rating').hide();
   $('.span-size').click(function(e) {
-    var vote_value = $(e.currentTarget).data("vote")
-    $("#rating_vote").val(vote_value);
-    $(e.currentTarget).addClass(".rating-on")
+    var vote_value = $(e.currentTarget).data('vote')
+    $('#rating_vote').val(vote_value);
+    $(e.currentTarget).siblings().removeClass('rating-on');
+    for ( var i = 1; i <= vote_value; i++ ) {
+      $(`.span-size[data-vote="${i}"]`).addClass('rating-on');
+    }
+
     $('#submit_rating').show();
+    $('.live-rating').text(vote_value);
+  });
+
+  $('.span-size').hover(function(e) {
+    var vote_value = $(e.currentTarget).data('vote')
+    $('.live-rating').text(vote_value);
+  });
+
+  $('#search').keypress(function(e) {
+    var search_term = $(e.currentTarget).val()
+    $.ajax({
+      url: '/books',
+      type: "GET",
+      data: {
+        book_title: search_term
+      },
+      dataType: 'json',
+      success: function(response) {
+        debugger
+        getData[title] = response;
+      }
+    });
   });
 });
 
 
 
+// var substringMatcher = function(strs) {
+//   return function findMatches(q, cb) {
+//     var matches, substringRegex;
+//     matches = [];
+//     substrRegex = new RegExp(q, 'i');
 
+//     $.each(strs, function(i, str) {
+//       if (substrRegex.test(str)) {
+//         matches.push(str);
+//       }
+//     });
 
+//     cb(matches);
+//   };
+// };
 
-// $(window).scroll(function() {
-//   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-//     $('.navbar-bottom').show(1000);
-//   }
-//   else {
-//     $('.navbar-bottom').hide();
-//   }
-// });
-
-// (function ($) {
-//   $(document).ready(function(){
-//     $(".navbar-bottom").hide();
-//     $(function () {
-//         $(window).scroll(function () {
-//                // set distance user needs to scroll before we start fadeIn
-//           if ($(this).scrollTop() > 100) {
-//               $('.navbar-bottom').fadeIn();
-//           } else {
-//               $('.navbar-bottom').fadeOut();
-//           }
-//       });
-//   });
+// $('#the-basics .typeahead').typeahead({
+//   hint: true,
+//   highlight: true,
+//   minLength: 1
 // });
