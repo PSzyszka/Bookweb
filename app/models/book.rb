@@ -12,7 +12,6 @@ class Book < ApplicationRecord
       Book.all
     else
       books = Book.all
-
       title = genre_name = search_criteria[:search]
       books = Book.joins(:genre).where("title LIKE :title", title: "%#{title}%")
         .or(Book.joins(:genre).merge(Genre.where("genres.name LIKE :name", name: "%#{genre_name}%")))
