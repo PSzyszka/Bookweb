@@ -1,7 +1,12 @@
 .row.table-margin
   .col-sm-6.offset-sm-3
     %h1.text-center All ratings to:
-    %h1.text-center #{@author.full_name}
+    - if @book.blank?
+      %h1.text-center #{@author.full_name}
+
+    - else
+      %h1.text-center #{@book.title}
+
     %table.table
       %thead
         %tr
