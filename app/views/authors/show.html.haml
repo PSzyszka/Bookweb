@@ -10,12 +10,14 @@
             %i.span_margin.text-size-20 Birth date: #{ @author.birth_date.strftime("%_m %b %Y") }
             %i.text-size-20 Rating:
             %strong
-              %i.text-size-20 #{ Rating.average_of_votes(@author.id) }
+              %i.text-size-20 #{ Rating.average_of_votes(@author.id, 'author') }
 
             = form_for(@rating, as: :rating, url: author_ratings_path(@author.id))do |f|
               %div.rating
-                - (1..5).each do |i|
-                  %span.span-size{ data: { vote: "#{i * 1}"} } ☆
+                - [*1..5].reverse.each do |i|
+                  %span.span-size{ data: { vote: "#{i}"} } ☆
+              %div#vote
+                %span.live-rating
               %div.rating-hidden-fieds
                 = hidden_field(:rating, :vote)
                 = hidden_field(:rating, :author_id)
@@ -31,7 +33,7 @@
                 %a= link_to genre.name, books_genre_path(genre.id)
 
     %div.submit-botton-2
-      %button.btn.btn-outline-success.my-2.my-sm-0#show_button Show related books:
+      %button.btn.btn-outline-success.my-2.my-sm-0#show_button Show related books of this author
 
     #carouselExampleControls.carousel.slide{ "data-ride" => "carousel" }
       .carousel-inner
