@@ -35,6 +35,17 @@ $(document).ready(function() {
     $('.live-rating').text(vote_value);
   });
 
+
+  var textInput = document.getElementById('#search');
+  var timeout = null;
+
+  textInput.onkeyup = function (e) {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+          console.log('Input Value:', textInput.value);
+      }, 800);
+  };
+
   $('#search').keypress(function(e) {
     var search_term = $(e.currentTarget).val()
     $.ajax({
