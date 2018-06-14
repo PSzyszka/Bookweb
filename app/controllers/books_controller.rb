@@ -2,7 +2,6 @@ class BooksController < ApplicationController
   layout "books", only: [:index]
 
   def index
-    binding.pry
     @books = Book.includes(:genre, :author, :publisher).search(search_params).page params[:page]
 
     respond_to do |format|
@@ -29,7 +28,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book.id)
     else
-      render 'new'
+      render 'new', alert: "Something went wrong..."
     end
   end
 
@@ -39,7 +38,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to books_path
     else
-      render 'new', alert: "Something went wrong..."
+      render 'edit', alert: "Something went wrong..."
     end
   end
 
@@ -67,7 +66,6 @@ class BooksController < ApplicationController
     params.require(:book).permit(
       :title,
       :description,
-      :rating,
       :year_of_release,
       :original_language,
       :number_of_pages,
