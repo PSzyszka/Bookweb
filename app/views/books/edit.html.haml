@@ -4,7 +4,7 @@
       %h2.text-center.login-headline Book edit
       .panel.panel-default
         .panel-body
-          = form_for(@book, as: :book, url: edit_book_path(@book)) do |f|
+          = form_for(@book, as: :book, url: book_path(@book)) do |f|
             .form-group.div-margin-botton
               = f.label :title
               = f.text_field :title, class: 'form-control'
