@@ -7,22 +7,18 @@
           = devise_error_messages!
           .form-group
             = f.label :email
-            %br/
             = f.email_field :email, autofocus: true, class: 'form-control'
           .form-group
             = f.label :name
-            %br/
             = f.text_field :name, class: 'form-control'
           .form-group
             = f.label :password
             - if @validatable
               %em
                 (#{@minimum_password_length} characters minimum)
-            %br/
             = f.password_field :password, autocomplete: "off", class: 'form-control'
           .form-group
             = f.label :password_confirmation
-            %br/
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
 
           .container
@@ -30,10 +26,9 @@
               %div.small-div2
                 = link_to 'Policy terms', books_path
               %div.small-div2
-                = form_for user_session_path do |f|
-                  #{f.check_box :terms, class: 'form-control-for-checkbox'}
+                = f.check_box :terms, class: 'form-control-for-checkbox'
               %div.small-div2
                 %button{type: 'button', class: 'button-size'} Accept
 
-          .actions.pull-right.submit-botton
-            = f.submit "Sign up", class: 'btn btn-default'
+            .actions.pull-right.submit-botton
+              = f.submit "Sign up", class: 'btn btn-default'
