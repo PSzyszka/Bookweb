@@ -13,6 +13,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @rating = Rating.new(book_id: params[:id])
+    @comment = @book.comments.build
+    @comments = Comment.includes(:user).where(book_id: params[:id])
   end
 
   def edit
