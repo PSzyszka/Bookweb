@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates_acceptance_of :terms
 
   has_many :comments
+
+  validates :name, presence: true
 end
