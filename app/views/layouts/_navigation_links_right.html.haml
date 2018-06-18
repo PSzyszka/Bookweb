@@ -1,6 +1,6 @@
 - if user_signed_in?
+  %li= link_to 'Profile', edit_user_password_path, method: :edit, class: 'navbar-text-green'
   %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-text-green'
 - else
-  %li= link_to 'New', new_book_path, class: 'navbar-text-green'
   %li= link_to 'Login', new_user_session_path, class: 'navbar-text-green'
   %li= link_to 'Register', new_user_registration_path, class: 'navbar-text-green'

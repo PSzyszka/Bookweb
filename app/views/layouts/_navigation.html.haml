@@ -11,11 +11,10 @@
         %a= link_to 'Message', new_message_path, class: 'navbar-text-green'
         %a= link_to 'New', new_book_path, class: 'navbar-text-green'
 
-
   .collapse.navbar-collapse
     %ul.nav.navbar-nav
       = form_tag books_path, method: :get, id: 'search-form', class: 'form-inline my-2 my-lg-0' do
-        = text_field_tag 'search', params[:search], placeholder: 'Search...', class: 'form-control mr-sm-2', autocomplete: :on
+        = text_field_tag 'search', params[:search], placeholder: 'Search...', class: 'search-field-width form-control mr-sm-3', autocomplete: :on
         = submit_tag 'Search', name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
 
   %nav.navbar.navbar-default.navbar-static-top
