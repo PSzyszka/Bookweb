@@ -36,31 +36,31 @@ $(document).ready(function() {
   });
 
 
-  var textInput = document.getElementById('#search');
-  var timeout = null;
+  // var textInput = document.getElementById('#search');
+  // var timeout = null;
 
-  textInput.onkeyup = function (e) {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-          console.log('Input Value:', textInput.value);
-      }, 800);
-  };
+  // textInput.onkeyup = function (e) {
+  //     clearTimeout(timeout);
+  //     timeout = setTimeout(function () {
+  //         console.log('Input Value:', textInput.value);
+  //     }, 800);
+  // };
 
-  $('#search').keypress(function(e) {
-    var search_term = $(e.currentTarget).val()
-    $.ajax({
-      url: '/books',
-      type: "GET",
-      data: {
-        book_title: search_term
-      },
-      dataType: 'json',
-      success: function(response) {
-        debugger
-        getData[title] = response;
-      }
-    });
-  });
+  // $('#search').keypress(function(e) {
+  //   var search_term = $(e.currentTarget).val()
+  //   $.ajax({
+  //     url: '/books',
+  //     type: "GET",
+  //     data: {
+  //       book_title: search_term
+  //     },
+  //     dataType: 'json',
+  //     success: function(response) {
+  //       debugger
+  //       getData[title] = response;
+  //     }
+  //   });
+  // });
 });
 
 
