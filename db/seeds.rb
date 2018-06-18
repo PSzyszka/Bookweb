@@ -191,32 +191,32 @@ if Book.count < 100
   end
 end
 
-# Rails.logger.info "Creating users..."
+Rails.logger.info "Creating users..."
 
-# 20.times do |i|
-#   number = i.zero? ? "" : i + 1
-#   name = "user#{number}"
-#   email = "#{name}@example.com"
-#   next if User.exists?(email: email)
-#   User.create!(
-#     name: name,
-#     email: email,
-#     password: "password",
-#     confirmed_at: Time.zone.now
-#   )
-# end
+20.times do |i|
+  number = i.zero? ? "" : i + 1
+  name = "user#{number}"
+  email = "#{name}@example.com"
+  next if User.exists?(email: email)
+  User.create!(
+    name: name,
+    email: email,
+    password: "password",
+    password_confirmation: "password",
+  )
+end
 
-# Rails.logger.info "Creating comments..."
+Rails.logger.info "Creating comments..."
 
-# Book.find_each do |book|
-#   next if book.comments.count > 0
-#   number_of_comments = rand(User.count)
-#   users = User.all.sample(number_of_comments)
-#   number_of_comments.times do |number|
-#     Comment.create!(
-#       description: Faker::Lorem.paragraph(3),
-#       book: book,
-#       user: users[number]
-#     )
-#   end
-# end
+Book.find_each do |book|
+  next if book.comments.count > 0
+  number_of_comments = rand(User.count)
+  users = User.all.sample(number_of_comments)
+  number_of_comments.times do |number|
+    Comment.create!(
+      description: Faker::Lorem.paragraph(3),
+      book: book,
+      user: users[number]
+    )
+  end
+end
